@@ -40,7 +40,7 @@ function App() {
           error={error}
           setError={setError}
         />
-        {loading && <p className="Loading">Loading holidays...</p>}
+        {loading && <div className="spinner"></div>}
         {error && <p className="Error">{error}</p>}
         <HolidayList holidays={holidays} />
       </main>
