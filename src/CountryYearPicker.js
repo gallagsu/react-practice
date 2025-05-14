@@ -26,15 +26,15 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
     [countries],
   );
 
-  const yearItems = [
+  const years = [
     { label: "2025", value: "2025" },
     { label: "2024", value: "2024" },
     { label: "2023", value: "2023" }
   ];
 
   const collection2 = useMemo(
-    () => createListCollection({ items: yearItems }),
-    [yearItems],
+    () => createListCollection({ items: years }),
+    [years],
   );
 
   return (
@@ -47,7 +47,6 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
           width="320px"
           value={country}
           onValueChange={(val) => setCountry(val.value)}
-          placeholder="Select country"
         >
           {/* Renders the native <select> for form submissions */}
           <Select.HiddenSelect />
@@ -58,7 +57,9 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
           {/* The clickable control (trigger + indicators) */}
           <Select.Control>
             <Select.Trigger>
-              <Select.ValueText placeholder="Choose..." />
+              <Select.ValueText>
+                {countries.find(c => c.value === country)?.label || "Choose..."}
+              </Select.ValueText>
             </Select.Trigger>
             <Select.IndicatorGroup>
               <Select.Indicator />
@@ -89,7 +90,6 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
           width="320px"
           value={year}
           onValueChange={(val) => setYear(val.value)}
-          placeholder="Select year"
         >
           {/* Renders the native <select> for form submissions */}
           <Select.HiddenSelect />
@@ -100,7 +100,9 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
           {/* The clickable control (trigger + indicators) */}
           <Select.Control>
             <Select.Trigger>
-              <Select.ValueText placeholder="Choose..." />
+            <Select.ValueText>
+                {years.find(c => c.value === year)?.label || "Choose..."}
+              </Select.ValueText>
             </Select.Trigger>
             <Select.IndicatorGroup>
               <Select.Indicator />
