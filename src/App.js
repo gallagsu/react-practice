@@ -10,15 +10,19 @@ function App() {
   const [year, setYear] = useState('2025');
   const [holidays, setHolidays] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetchHolidays(country, year).then(holidaysData => {
       setHolidays(holidaysData);
       setError(null);
+      setLoading(false);
     })
     .catch(err => {
       console.error('Error:', err);
-      setError('Something went wrong while fetching holidays.Please try again later.')
+      setError('Something went wrong while fetching holidays. Please try again later.')
+      setLoading(false);
     });
   }, [country, year]);
 
@@ -36,6 +40,7 @@ function App() {
           error={error}
           setError={setError}
         />
+        {loading && <p className="Loading">Loading holidays...</p>}
         {error && <p className="Error">{error}</p>}
         <HolidayList holidays={holidays} />
       </main>
