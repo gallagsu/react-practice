@@ -7,8 +7,8 @@ import { Box, Flex, Spinner, Text } from "@chakra-ui/react";
 
 function App() {
 
-  const [country, setCountry] = useState('NL');
-  const [year, setYear] = useState('2025');
+  const [country, setCountry] = useState(['NL']);
+  const [year, setYear] = useState(['2025']);
   const [holidays, setHolidays] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);

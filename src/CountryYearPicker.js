@@ -40,6 +40,22 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
     [years],
   );
 
+  useEffect(() => {
+    console.log(`[${new Date().toLocaleTimeString()}] Countries:`, countries);
+  }, [countries]);
+
+  useEffect(() => {
+    console.log(`[${new Date().toLocaleTimeString()}] Years:`, years);
+  }, [years]);
+
+  useEffect(() => {
+    console.log(`[${new Date().toLocaleTimeString()}] Current Country State:`, country);
+  }, [country]);
+
+  useEffect(() => {
+    console.log(`[${new Date().toLocaleTimeString()}] Current Year State:`, year);
+  }, [year]);
+
   return (
     <Flex direction={["column", "column", "row"]} gap={4} mb={4}>
 
@@ -49,7 +65,7 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
           size="sm"
           width="320px"
           value={country}
-          onValueChange={(val) => setCountry(val.value)}
+          onValueChange={(e) => setCountry(e.value)}
         >
           {/* Renders the native <select> for form submissions */}
           <Select.HiddenSelect />
@@ -61,7 +77,7 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
           <Select.Control>
             <Select.Trigger>
               <Select.ValueText>
-                {countries.find(c => c.value === country)?.label || "Choose..."}
+                {countries.find(c => c.value === country[0])?.label || "Choose..."}
               </Select.ValueText>
             </Select.Trigger>
             <Select.IndicatorGroup>
@@ -74,9 +90,9 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
           <Portal>
             <Select.Positioner>
               <Select.Content>
-                {collection.items.map((item) => (
-                  <Select.Item key={item.value} item={item}>
-                    {item.label}
+                {collection.items.map((ci) => (
+                  <Select.Item key={ci.value} item={ci}>
+                    {ci.label}
                     <Select.ItemIndicator />
                   </Select.Item>
                 ))}
@@ -104,7 +120,7 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
           <Select.Control>
             <Select.Trigger>
             <Select.ValueText>
-                {years.find(y => y.value === year)?.label || "Choose..."}
+                {years.find(y => y.value === year[0])?.label || "Choose..."}
               </Select.ValueText>
             </Select.Trigger>
             <Select.IndicatorGroup>
@@ -117,9 +133,9 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
           <Portal>
             <Select.Positioner>
               <Select.Content>
-                {collection2.items.map((item) => (
-                  <Select.Item key={item.value} item={item}>
-                    {item.label}
+                {collection2.items.map((yi) => (
+                  <Select.Item key={yi.value} item={yi}>
+                    {yi.label}
                     <Select.ItemIndicator />
                   </Select.Item>
                 ))}
