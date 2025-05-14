@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as Sentry from "@sentry/react";
+import { ChakraProvider } from "@chakra-ui/react";
+import { system } from "@chakra-ui/react/preset";
 
 Sentry.init({
   dsn: "https://7b35a0b7397a1357f8b3178d59d2d0bd@o4509321053732864.ingest.de.sentry.io/4509321055109200",
@@ -31,7 +33,9 @@ Sentry.init({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ChakraProvider value={system}> 
+      <App />
+    </ChakraProvider>
   </React.StrictMode>
 );
 

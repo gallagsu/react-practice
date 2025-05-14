@@ -1,18 +1,22 @@
 import React from 'react';
+import { Box, Text, VStack } from "@chakra-ui/react";
 
 function HolidayList({ holidays }) {
     return (
-        <ul>
-            {holidays.length > 0 ? (
-                holidays.map((holiday, index) => (
-                    <li key={index}>
-                        {holiday.startDate}: {holiday.name[0].text} {/* Access 'text' if 'name' is an object */}
-                    </li>
-                ))
-            ) : (
-                <p>No holidays found for the selected country and year.</p>
-            )}
-        </ul>
+        <section>
+            <VStack spacing={4}>
+                {holidays.length === 0 ? (
+                    <Text>No holidays found for the selected country and year.</Text>
+                ) : (
+                    holidays.map((holiday, index) => (
+                        <Box key={index} p={4} border="1px" borderRadius="md" borderColor="gray.200">
+                            <Text>{holiday.name[0].text}</Text>
+                            <Text>{holiday.startDate}</Text>
+                        </Box>
+                    ))
+                )}
+            </VStack>
+        </section>
     );
 }
 

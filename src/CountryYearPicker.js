@@ -1,41 +1,130 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { fetchCountries } from './api/api';
+import { Box, Flex, Portal, Select, createListCollection, Spinner, } from "@chakra-ui/react";
 
 function CountryYearPicker({ country, setCountry, year, setYear, error, setError }) {
 
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
-    fetchCountries().then(countriesData => {
-      setCountries(countriesData);
-    })
-    .catch(err => {
-      console.error('Error:', err);
-      setError('Something went wrong while fetching country list. Please try again later.')
-    });
+    fetchCountries()
+      .then(countriesData => {
+        setCountries(
+          countriesData.map(country => ({
+            label: country.name[0].text,
+            value: country.isoCode,
+          })));
+      })
+      .catch(err => {
+        console.error('Error:', err);
+        setError('Something went wrong while fetching country list. Please try again later.');
+      });
   }, []);
 
-  return (
-    <div>
-      <select onChange={(e) => setCountry(e.target.value)} value={country}>
-        {countries.length > 0 ? (
-          countries.map((country, index) => (
-            <option key={index} value={country.isoCode}>
-              {country.name[0].text}
-            </option>
-          ))
-        ) : (
-          <option>No countries found.</option>
-        )}
-      </select>
-      {error && <p className="Error">{error}</p>}
+  const collection = useMemo(
+    () => createListCollection({ items: countries }),
+    [countries],
+  );
 
-      <select onChange={(e) => setYear(e.target.value)} value={year}>
-        <option value="2025">2025</option>
-        <option value="2024">2024</option>
-        <option value="2023">2023</option>
-      </select>
-    </div>
+  const yearItems = [
+    { label: "2025", value: "2025" },
+    { label: "2024", value: "2024" },
+    { label: "2023", value: "2023" }
+  ];
+
+  const collection2 = useMemo(
+    () => createListCollection({ items: yearItems }),
+    [yearItems],
+  );
+
+  return (
+    <Flex direction={["column", "column", "row"]} gap={4} mb={4}>
+
+      <Box flex={1}>
+        <Select.Root
+          collection={collection}
+          size="sm"
+          width="320px"
+          value={country}
+          onValueChange={(val) => setCountry(val.value)}
+          placeholder="Select country"
+        >
+          {/* Renders the native <select> for form submissions */}
+          <Select.HiddenSelect />
+
+          {/* Optional label */}
+          <Select.Label>Select country</Select.Label>
+
+          {/* The clickable control (trigger + indicators) */}
+          <Select.Control>
+            <Select.Trigger>
+              <Select.ValueText placeholder="Choose..." />
+            </Select.Trigger>
+            <Select.IndicatorGroup>
+              <Select.Indicator />
+              <Select.ClearTrigger />
+            </Select.IndicatorGroup>
+          </Select.Control>
+
+          {/* The popover itself */}
+          <Portal>
+            <Select.Positioner>
+              <Select.Content>
+                {collection.items.map((item) => (
+                  <Select.Item key={item.value} item={item}>
+                    {item.label}
+                    <Select.ItemIndicator />
+                  </Select.Item>
+                ))}
+              </Select.Content>
+            </Select.Positioner>
+          </Portal>
+        </Select.Root>
+      </Box>
+
+      <Box flex={1}>
+        <Select.Root
+          collection={collection2}
+          size="sm"
+          width="320px"
+          value={year}
+          onValueChange={(val) => setYear(val.value)}
+          placeholder="Select year"
+        >
+          {/* Renders the native <select> for form submissions */}
+          <Select.HiddenSelect />
+
+          {/* Optional label */}
+          <Select.Label>Select year</Select.Label>
+
+          {/* The clickable control (trigger + indicators) */}
+          <Select.Control>
+            <Select.Trigger>
+              <Select.ValueText placeholder="Choose..." />
+            </Select.Trigger>
+            <Select.IndicatorGroup>
+              <Select.Indicator />
+              <Select.ClearTrigger />
+            </Select.IndicatorGroup>
+          </Select.Control>
+
+          {/* The popover itself */}
+          <Portal>
+            <Select.Positioner>
+              <Select.Content>
+                {collection2.items.map((item) => (
+                  <Select.Item key={item.value} item={item}>
+                    {item.label}
+                    <Select.ItemIndicator />
+                  </Select.Item>
+                ))}
+              </Select.Content>
+            </Select.Positioner>
+          </Portal>
+        </Select.Root>
+      </Box>
+
+    </Flex>
   );
 }
 

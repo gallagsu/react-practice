@@ -14,11 +14,11 @@ export const fetchHolidays = async (countryCode, year) => {
 };
 
 export const fetchCountries = async () => {
-    try {
-      const response = await axios.get(`${COUNTRY_API_URL}`);
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching countries:', error);
-      return []; // Return an empty array if there's an error
-    }
-  };
+  try {
+    const response = await axios.get(`${COUNTRY_API_URL}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching countries:', error);
+    return []; // Return an empty array if there's an error
+  }
+};
