@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@sentry/browser": "^9.18.0",
+    "@sentry/cli": "^2.45.0",
+    "@sentry/react": "^9.18.0",
+    "@sentry/tracing": "^7.120.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -15,9 +19,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run sentry:sourcemaps",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org none-aa6 --project javascript-react ./build && sentry-cli sourcemaps upload --org none-aa6 --project javascript-react ./build"
   },
   "eslintConfig": {
     "extends": [
