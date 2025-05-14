@@ -33,8 +33,10 @@ function App() {
           setCountry={setCountry}
           year={year}
           setYear={setYear}
+          error={error}
+          setError={setError}
         />
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && <p className="Error">{error}</p>}
         <HolidayList holidays={holidays} />
       </main>
     </div>
