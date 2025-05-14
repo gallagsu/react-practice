@@ -11,7 +11,6 @@ function App() {
   const [holidays, setHolidays] = useState([]);
 
   useEffect(() => {
-    // Call fetchHolidays and log the result to the console
     fetchHolidays(country, year).then(holidaysData => {
       setHolidays(holidaysData);
     });
@@ -23,7 +22,12 @@ function App() {
         HEADER
       </header>
       <main>
-      <CountryYearPicker country={country, setCountry, year, setYear} />
+        <CountryYearPicker
+          country={country}
+          setCountry={setCountry}
+          year={year}
+          setYear={setYear}
+        />
         <HolidayList holidays={holidays} />
       </main>
     </div>
