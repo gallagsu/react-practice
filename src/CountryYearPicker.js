@@ -29,7 +29,10 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
   const years = [
     { label: "2025", value: "2025" },
     { label: "2024", value: "2024" },
-    { label: "2023", value: "2023" }
+    { label: "2023", value: "2023" },
+    { label: "2022", value: "2022" },
+    { label: "2021", value: "2021" },
+    { label: "2020", value: "2020" },
   ];
 
   const collection2 = useMemo(
@@ -101,7 +104,7 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
           <Select.Control>
             <Select.Trigger>
             <Select.ValueText>
-                {years.find(c => c.value === year)?.label || "Choose..."}
+                {years.find(y => y.value === year)?.label || "Choose..."}
               </Select.ValueText>
             </Select.Trigger>
             <Select.IndicatorGroup>
