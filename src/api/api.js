@@ -22,5 +22,3 @@ export const fetchCountries = async () => {
       return []; // Return an empty array if there's an error
     }
   };
-
-

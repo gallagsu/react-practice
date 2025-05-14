@@ -8,7 +8,6 @@ function CountryYearPicker({ country, setCountry, year, setYear }) {
   useEffect(() => {
     fetchCountries().then(countriesData => {
       setCountries(countriesData);
-      console.log(countriesData);
     });
   }, []);
 

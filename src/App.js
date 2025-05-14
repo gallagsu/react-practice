@@ -9,10 +9,16 @@ function App() {
   const [country, setCountry] = useState('NL');
   const [year, setYear] = useState('2025');
   const [holidays, setHolidays] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchHolidays(country, year).then(holidaysData => {
       setHolidays(holidaysData);
+      setError(null);
+    })
+    .catch(err => {
+      console.error('Error:', err);
+      setError('Something went wrong while fetching holidays.Please try again later.')
     });
   }, [country, year]);
 
@@ -28,6 +34,7 @@ function App() {
           year={year}
           setYear={setYear}
         />
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <HolidayList holidays={holidays} />
       </main>
     </div>
