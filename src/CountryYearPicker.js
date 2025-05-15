@@ -40,22 +40,6 @@ function CountryYearPicker({ country, setCountry, year, setYear, error, setError
     [years],
   );
 
-  useEffect(() => {
-    console.log(`[${new Date().toLocaleTimeString()}] Countries:`, countries);
-  }, [countries]);
-
-  useEffect(() => {
-    console.log(`[${new Date().toLocaleTimeString()}] Years:`, years);
-  }, [years]);
-
-  useEffect(() => {
-    console.log(`[${new Date().toLocaleTimeString()}] Current Country State:`, country);
-  }, [country]);
-
-  useEffect(() => {
-    console.log(`[${new Date().toLocaleTimeString()}] Current Year State:`, year);
-  }, [year]);
-
   return (
     <Flex direction={["column", "column", "row"]} gap={4} mb={4}>
 
