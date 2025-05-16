@@ -3,16 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ark-ui/react": "^5.9.1",
-    "@chakra-ui/react": "^3.17.0",
+    "@chakra-ui/react": "^3.18.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@sentry/browser": "^9.18.0",
     "@sentry/cli": "^2.45.0",
     "@sentry/react": "^9.18.0",
     "@sentry/tracing": "^7.120.3",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
     "axios": "^0.27.2",
     "framer-motion": "^12.11.3",
     "react": "^18.2.0",
@@ -46,7 +43,13 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^14.6.1"
+    "@testing-library/user-event": "^14.6.1",
+    "babel-jest": "^29.7.0"
   }
 }
