@@ -20,14 +20,14 @@ export default function Accordion(props) {
                 const isOpen = index === openIndex;
 
                 return (
-                    <div className={styles.accordionItem}>
+                    <div className={styles.accordionItem} key={item.title}>
                         <div className={styles.itemTitle}>
                             {item.title}
                         </div>
-                        <button className={styles.toggle} onClick={() => handleToggle(index)}>
+                        <button className={styles.toggle} onClick={() => handleToggle(index)} aria-expanded={isOpen} aria-controls={`item-${index}`} id={`toggle-${index}`}>
                             {isOpen ? `-` : `+`}
                         </button>
-                        <div className={`${styles.itemContent} ${isOpen ? '' : styles.hidden}`}>
+                        <div className={`${styles.itemContent} ${isOpen ? '' : styles.hidden}`} id={`item-${index}`} role="region" aria-labelledby={`toggle-${index}`} hidden={!isOpen}>
                             {item.content}
                         </div>
                     </div>

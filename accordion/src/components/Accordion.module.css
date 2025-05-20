@@ -6,6 +6,7 @@
 
 .accordion h1 {
     font-size: 20px;
+    margin: 10px 0;
 }
 
 .accordionItem {
@@ -17,9 +18,9 @@
 }
 
 .itemTitle {
-    padding: 0.5rem;
     cursor: pointer;
     font-weight: 600;
+    padding: 10px 0;
 }
 
 .toggle {
@@ -29,7 +30,6 @@
 }
 
 .itemContent {
-    padding: 1rem;
     flex: 0 0 100%;
 }
 
