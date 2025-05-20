@@ -1,0 +1,11 @@
+# ignore all node_modules
+node_modules/
+
+# Next.js output
+.next/
+
+# logs, temp files, OS files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.DS_Store
