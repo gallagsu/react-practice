@@ -1,0 +1,21 @@
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 16px;
+}
+
+.card {
+    aspect-ratio: 1 / 1;
+    background: #b5a2a2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.shuffledCards {
+    max-width: 400px;
+    object-fit: cover;   /* maintain aspect, cropping as needed */
+    display: block;
+}
