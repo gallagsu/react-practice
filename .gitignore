@@ -1,11 +1,34 @@
-# ignore all node_modules
-node_modules/
 
-# Next.js output
+# ──────────────────────────────────────────────────────────────
+# dependencies (any project)
+node_modules/
+.pnp/
+.pnp.js
+
+# Next.js build output
 .next/
 
-# logs, temp files, OS files
+# Create-React-App / other build folders
+build/
+
+# testing
+coverage/
+
+# environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-*.DS_Store
+
+# OS / editor junk
+.DS_Store
+.vscode/
+
+# Sentry config
+.sentryclirc
+# ──────────────────────────────────────────────────────────────
