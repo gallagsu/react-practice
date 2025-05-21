@@ -71,6 +71,10 @@ export default function MemoryGame({ images }) {
               : 'mismatch';
           }
 
+          //check if the game is over
+          if(matched.size === 12)
+            animation = 'surprise';
+
           // compose your existing CSS classes
           const cardClass = classNames(
             'card',

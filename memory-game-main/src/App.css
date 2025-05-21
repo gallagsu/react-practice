@@ -1,7 +1,7 @@
 html, body, #__next, #root {
-  height: 100%;
-  margin: 0;
-  font-family: sans-serif;
+    height: 100%;
+    margin: 0;
+    font-family: sans-serif;
 }
 
 h1 {
@@ -36,7 +36,7 @@ h1 {
 }
 
 .card.revealed .cardImage {
-  display: block;
+    display: block;
 }
 
 .startButton {
@@ -55,23 +55,35 @@ h1 {
 }
 
 @keyframes pop {
-  0%   { transform: scale(1);     }
-  50%  { transform: scale(1.1);   }
-  100% { transform: scale(1);     }
+    0%   { transform: scale(1);     }
+    50%  { transform: scale(1.1);   }
+    100% { transform: scale(1);     }
 }
 
 @keyframes shake {
-  0%   { transform: translateX(0);   }
-  25%  { transform: translateX(-5px); }
-  50%  { transform: translateX(5px);  }
-  75%  { transform: translateX(-5px); }
-  100% { transform: translateX(0);    }
+    0%   { transform: translateX(0);   }
+    25%  { transform: translateX(-5px); }
+    50%  { transform: translateX(5px);  }
+    75%  { transform: translateX(-5px); }
+    100% { transform: translateX(0);    }
+}
+
+@keyframes surprise {
+    0%   { transform: scale(1);     }
+    25%  { transform: scale(1.2);   }
+    50% { transform: scale(1);     }
+    75%  { transform: scale(1.2);   }
+    100% { transform: scale(1);     }
 }
 
 .match {
-  animation: pop 300ms ease-out;
+    animation: pop 300ms ease-out;
 }
 
 .mismatch {
-  animation: shake 400ms ease-in-out;
+    animation: shake 400ms ease-in-out;
+}
+
+.surprise {
+    animation: surprise 400ms ease-in-out;
 }
