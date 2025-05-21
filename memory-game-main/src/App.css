@@ -11,6 +11,7 @@ h1 {
 .container {
     max-height: 100vh;
     max-width: 800px;
+    margin: 40px;
 }
 
 .cardGrid {

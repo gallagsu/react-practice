@@ -58,7 +58,7 @@ export default function MemoryGame({ images }) {
 
   // 6) Set high score when the game is finished
   useEffect(() => {
-      if (matched.size === 12 && guesses<highScore) {
+      if (matched.size === 12 && (highScore == 0 || guesses<highScore)) {
         setHighScore(guesses);
       }
     }, [matched.size, guesses]); 
