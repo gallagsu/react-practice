@@ -1,6 +1,21 @@
+html, body, #__next, #root {
+  height: 100%;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+h1 {
+    font-weight: 400;
+}
+
+.container {
+    max-height: 100vh;
+    max-width: 800px;
+}
+
 .cardGrid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(3, auto);
     gap: 16px;
 }
@@ -14,8 +29,49 @@
     overflow: hidden;
 }
 
-.shuffledCards {
-    max-width: 400px;
-    object-fit: cover;   /* maintain aspect, cropping as needed */
-    display: block;
+.cardImage {
+    max-width: 600px;
+    object-fit: cover;
+    display: none;
+}
+
+.card.revealed .cardImage {
+  display: block;
+}
+
+.startButton {
+    margin-bottom: 20px;
+    color: #000000;
+    background-color: #f1c5df;
+    padding: 15px 25px;
+    border-radius: 9px;
+    border-style: none;
+    font-size: 16px;
+}
+
+.startButton:hover {
+    background-color: #f1dae8;
+    cursor: pointer;
+}
+
+@keyframes pop {
+  0%   { transform: scale(1);     }
+  50%  { transform: scale(1.1);   }
+  100% { transform: scale(1);     }
+}
+
+@keyframes shake {
+  0%   { transform: translateX(0);   }
+  25%  { transform: translateX(-5px); }
+  50%  { transform: translateX(5px);  }
+  75%  { transform: translateX(-5px); }
+  100% { transform: translateX(0);    }
+}
+
+.match {
+  animation: pop 300ms ease-out;
+}
+
+.mismatch {
+  animation: shake 400ms ease-in-out;
 }
